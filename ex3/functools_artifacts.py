@@ -47,11 +47,14 @@ def spell_dispatcher() -> Callable:
         #   Spell dispatcher.
     '''
     @singledispatch
-    def cast_spell(spell):
+    def cast_spell(spell) -> str:
         return (f'Cannot cast spell of type {type(spell).__name__}')
 
     @cast_spell.register(int)
-    def _(spell: int):
+    def _(spell: int) -> str:
+        '''
+            #   Cast spell of type int.
+        '''
         if spell < 0:
             return ('Invalid damage value')
         elif spell < 50:
@@ -60,7 +63,10 @@ def spell_dispatcher() -> Callable:
             return (f'Casting powerful meteor: {spell} damage')
 
     @cast_spell.register(str)
-    def _(spell: str):
+    def _(spell: str) -> str:
+        '''
+            #   Cast spell of type str.
+        '''
         valid_enchantments = ['fire', 'ice', 'lightning', 'heal']
         if spell.lower() in valid_enchantments:
             return (f'Enchantment \'{spell}\' successfully applied')
@@ -68,7 +74,10 @@ def spell_dispatcher() -> Callable:
             return (f'Unknown enchantment: {spell}')
 
     @cast_spell.register(list)
-    def _(spell: list):
+    def _(spell: list) -> str:
+        '''
+            #   Cast spell of type list.
+        '''
         if not spell:
             return ('No spells to cast')
         results = []
@@ -85,7 +94,7 @@ def spell_dispatcher() -> Callable:
 
 def operation_lib() -> dict:
     '''
-        #   Small lib to rec operations (callable) and operations (str)
+        #   Small lib to rec operations (Callable) and operations (str)
     '''
     temp: dict = {
         'add': add,
@@ -106,7 +115,7 @@ def reducer_exec() -> None:
     print(f'Max: {spell_reducer(spells, "max")}')
 
 
-def partial_exec():
+def partial_exec() -> None:
     '''
         #   Partial exec.
     '''
@@ -116,7 +125,7 @@ def partial_exec():
     print(x['lightning_enchant']())
 
 
-def spell_exec():
+def spell_exec() -> None:
     '''
         #   Spell exec.
     '''

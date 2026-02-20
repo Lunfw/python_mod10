@@ -8,6 +8,9 @@ def mage_counter() -> Callable:
     count = 0
 
     def counter() -> int:
+        '''
+            #   Nested counter.
+        '''
         nonlocal count
         count += 1
         return (count)
@@ -21,6 +24,9 @@ def spell_accumulator(initial_power: int) -> Callable:
     power = initial_power
 
     def accumulator() -> int:
+        '''
+            #   Nested accumulator.
+        '''
         nonlocal power
         power += initial_power
         return (power)
@@ -33,6 +39,9 @@ def enchantment_factory(enchantment_type: str) -> Callable:
     '''
 
     def enchantment() -> str:
+        '''
+            #   Nested enchantment.
+        '''
         temp: str = (
             enchantment_type.split()[0] + ' ' + enchantment_type.split()[1]
         )
@@ -47,9 +56,15 @@ def memory_vault() -> dict[str, Callable]:
     lib: dict = {}
 
     def store(key: str, value: Callable) -> None:
+        '''
+            #   Store function.
+        '''
         lib[key] = value
 
     def recall(key: str) -> Callable:
+        '''
+            #   Recall function.
+        '''
         try:
             _ = lib[key]
             return (lib[key])
