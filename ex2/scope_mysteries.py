@@ -2,6 +2,9 @@ from typing import Callable
 
 
 def mage_counter() -> Callable:
+    '''
+        #   Counter function.
+    '''
     count = 0
 
     def counter() -> int:
@@ -12,6 +15,9 @@ def mage_counter() -> Callable:
 
 
 def spell_accumulator(initial_power: int) -> Callable:
+    '''
+        #   Accumulator function.
+    '''
     power = initial_power
 
     def accumulator() -> int:
@@ -22,6 +28,9 @@ def spell_accumulator(initial_power: int) -> Callable:
 
 
 def enchantment_factory(enchantment_type: str) -> Callable:
+    '''
+        #   Enchantment function.
+    '''
 
     def enchantment() -> str:
         temp: str = (
@@ -32,6 +41,9 @@ def enchantment_factory(enchantment_type: str) -> Callable:
 
 
 def memory_vault() -> dict[str, Callable]:
+    '''
+        #   Memory vault function.
+    '''
     lib: dict = {}
 
     def store(key: str, value: Callable) -> None:
