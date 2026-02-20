@@ -42,7 +42,7 @@ def memory_vault() -> dict[str, Callable]:
             _ = lib[key]
             return (lib[key])
         except KeyError:
-            raise KeyError(f"Memory not found")
+            raise KeyError('Memory not found')
     return (lib)
 
 
